@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>612</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>聊天室客户端</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* ========================
+   1. 全局背景 (假设给整个窗口设背景)
+   ======================== */
+QWidget#page {  /* 注意：这里#page要改成你stackedWidget当前页面的objectName */
+    background-color: #f0f2f5; /* 浅灰色背景，也可以换成图片 */
+    /* background-image: url(:/images/bg.jpg); 如果你有背景图 */
+}
+
+/* ========================
+   2. 登录卡片容器 (刚才让你加的 QFrame)
+   ======================== */
+QFrame#loginFrame {
+    background-color: #ffffff;  /* 纯白背景 */
+    border: 1px solid #dcdfe6;  /* 浅灰边框 */
+    border-radius: 10px;        /* 圆角 */
+    /* 如果想加阴影，Qt Designer里看不见，得运行代码才有，或者用border模拟 */
+}
+
+/* ========================
+   3. 标签 (服务器地址、昵称)
+   ======================== */
+QLabel {
+    font-family: &quot;Microsoft YaHei&quot;;
+    font-size: 14px;
+    color: #333333;
+    font-weight: bold;
+}
+
+/* ========================
+   4. 输入框 (LineEdit)
+   ======================== */
+QLineEdit {
+    border: 1px solid #dcdfe6; /* 默认边框颜色 */
+    border-radius: 4px;        /* 小圆角 */
+    padding: 8px;              /* 内边距，让输入框变高，不那么挤 */
+    background-color: #f7f9fa; /* 极淡的灰底，护眼 */
+    font-size: 14px;
+}
+
+/* 鼠标点进去变成蓝色 */
+QLineEdit:focus {
+    border: 1px solid #409eff; 
+    background-color: #ffffff;
+}
+
+/* ========================
+   5. 登录按钮 (PushButton)
+   ======================== */
+QPushButton {
+    background-color: #409eff; /* 亮蓝色 */
+    color: white;              /* 白字 */
+    border-radius: 4px;        /* 圆角 */
+    font-family: &quot;Microsoft YaHei&quot;;
+    font-size: 16px;
+    padding: 10px;             /* 按钮撑大点 */
+    border: none;
+    font-weight: bold;
+}
+
+/* 鼠标悬停变深 */
+QPushButton:hover {
+    background-color: #66b1ff;
+}
+
+/* 鼠标按下更深 */
+QPushButton:pressed {
+    background-color: #3a8ee6;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="label_title">
+      <property name="styleSheet">
+       <string notr="true">QLabel#label_title {
+    background-color: #409eff; /* 蓝色背景 */
+    color: white;              /* 白色文字 */
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;        /* 圆角 */
+    padding: 10px 20px;        /* 内边距：上下10px，左右20px，让背景大一点 */
+    margin-bottom: 20px;       /* 让标题和下面的输入框保持距离 */
+}</string>
+      </property>
+      <property name="text">
+       <string>孙帅豪的聊天室</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="loginPage">
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="2" column="1">
+         <spacer name="verticalSpacer_4">
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>83</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="1">
+         <widget class="QFrame" name="loginFrame">
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <layout class="QGridLayout" name="gridLayout">
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="userNameEdit">
+               <property name="text">
+                <string>nickname</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_2">
+               <property name="text">
+                <string>服务器地址：</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="serverEdit">
+               <property name="text">
+                <string>127.0.0.1</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_3">
+               <property name="text">
+                <string>昵称：</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="verticalSpacer">
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>0</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_Login">
+             <property name="text">
+              <string>登陆聊天室</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <spacer name="horizontalSpacer_2">
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>198</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="1">
+         <spacer name="verticalSpacer_3">
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>83</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="0">
+         <spacer name="horizontalSpacer">
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>198</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="chatPage">
+       <layout class="QGridLayout" name="gridLayout_5">
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QTextEdit" name="chatRoomEdit"/>
+          </item>
+          <item>
+           <widget class="QListWidget" name="userListWidget">
+            <property name="maximumSize">
+             <size>
+              <width>120</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLineEdit" name="chatLineEdit"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_publish">
+            <property name="text">
+             <string>发送</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_retreat">
+            <property name="text">
+             <string>退出</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
